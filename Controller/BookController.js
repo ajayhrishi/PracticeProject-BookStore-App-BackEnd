@@ -10,19 +10,21 @@ const AllBooks= async(req,res,next)=>{
      console.log(err);
     }
     if(!books) {return res.status(404).json({message:'No books found'})}
+    console.log("received request in getting all the books.");
     return res.status(200).json({books});
  }
 
 const addBook = async(req,res,next)=>{
     let book;
-    const {name,author,price,availability,description}=req.body;
+    const {name,author,price,available,description}=req.body;
+    console.log("received a data of name: ", name,", author: ",author,", price: ",price, ", available: ",available );
     try{
         book= new Book({
             name,
             author,
             price,
             description,
-            availability
+            available
         })
         await book.save();
 
