@@ -5,7 +5,8 @@ const BookSchema = new Schema({// schemea for the structure of the book with all
     name:{type:String, required:true}, 
     author:{type:String, required:true},
     price:{type:Number, required:true},
-    available:{type:Boolean, required:true}
+    available:{type:Boolean, required:true},
+    image:{type:String, required:true}
 });
 
 module.exports= mongoose.model("Book",BookSchema);  // exporting Book's structure from this file as the moongoose model

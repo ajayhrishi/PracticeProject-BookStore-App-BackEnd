@@ -16,15 +16,16 @@ const AllBooks = async (req, res, next) => {
 
 const addBook = async (req, res, next) => {
     let book;
-    const { name, author, price, available, description } = req.body;
-    console.log("received a data of name: ", name, ", author: ", author, ", price: ", price, ", available: ", available);
+    const { name, author, price, available, description, image } = req.body;
+    console.log("received a data of name: ", name, ", author: ", author, ", price: ", price, ", available: ", available, " Image: ",image);
     try {
         book = new Book({
             name,
             author,
             price,
             description,
-            available
+            available,
+            image
         })
         await book.save();
     } catch (err) {
@@ -49,13 +50,15 @@ const getByID = async (req,res,next)=>{
 
 const updateById = async(req,res,next)=>{
     console.log("reached the expected function");
-    const {name,author,price,description,available} = req.body;
+    const {name,author,price,description,available,image} = req.body;
  try{
     await Book.findByIdAndUpdate(req.params.id,{name,
         author,
         price,
         description,
-        available});
+        available,
+        image
+        });
  }catch(err){
     console.log('I was here');
     return res.status(500).json(err.message);
