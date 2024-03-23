@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); // Import the CORS middleware
-const router = require('../book-store-backend/Routes/BookStoreRoutes');
+const router = require('./src/Routes/BookStoreRoutes');
 dotenv.config();
 
 const app = express();
